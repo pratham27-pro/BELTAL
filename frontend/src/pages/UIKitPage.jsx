@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Button from '../components/ui/Button'
+import Button from '../components/ui/button'
 import Card, { CardHeader, CardTitle, CardContent, CardFooter } from '../components/ui/Card'
 import Table from '../components/ui/Table'
 import Modal from '../components/ui/Modal'
