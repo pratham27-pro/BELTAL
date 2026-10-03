@@ -399,6 +399,13 @@ body {
   font-family: "Material Symbols Outlined" !important;
 }
 
+/* The public landing page follows Indian government web guidelines (Noto Sans,
+   with Devanagari), so it opts out of the app-wide Times New Roman above. */
+.gov-landing,
+.gov-landing *:not(.material-symbols-outlined) {
+  font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Segoe UI', Arial, Helvetica, sans-serif !important;
+}
+
 /* Light-blue dashboard with a restrained sovereign-gold accent palette. */
 .dashboard-theme.light-theme {
   color: #163b5c !important;
@@ -1359,4 +1366,42 @@ body {
   .docs-reveal { opacity: 1; transform: none; transition: none; }
   .docs-card, .docs-endpoint, .docs-endpoint::before, .docs-collapse, .docs-chevron, .docs-nav-link, .docs-top { transition: none; }
   .docs-card:hover, .docs-nav-link:hover { transform: none; }
+}
+
+/* Government-portal palette used by the public landing page. Navy owns
+   structure, saffron marks the primary action, green marks live state. */
+@theme {
+  --color-gov-navy: #0b2a55;
+  --color-gov-navy-deep: #071c3a;
+  --color-gov-navy-hover: #143d73;
+  --color-gov-link: #0b4f9c;
+  --color-gov-link-hover: #062f5f;
+  --color-gov-saffron: #ff9933;
+  --color-gov-saffron-hover: #f08416;
+  --color-gov-green: #138808;
+  --color-gov-ink: #1b2733;
+  --color-gov-muted: #44515f;
+  --color-gov-faint: #8793a3;
+  --color-gov-wash: #f6f8fb;
+  --color-gov-wash-strong: #f1f4f8;
+  --color-gov-notice: #fff8e6;
+  --color-gov-rule: #d3dae4;
+  --color-gov-rule-strong: #b9c3d1;
+  --color-gov-hairline: #e1e6ee;
+  --color-gov-hover: #eef3fa;
+  --color-gov-hover-strong: #e6ecf4;
+  --color-gov-on-navy: #dbe5f2;
+  --color-gov-select: #cfe0f5;
+  --color-gov-focus: #f5a300;
+}
+
+/* Landing motion. One entrance for the hero, and a highlight that marks a new
+   block arriving. Both are fine to drop entirely under reduced motion. */
+@keyframes gov-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes gov-tick { from { background-color: color-mix(in srgb, var(--color-gov-saffron) 35%, white); } to { background-color: transparent; } }
+.gov-rise { animation: gov-rise .6s cubic-bezier(.16, 1, .3, 1); }
+.gov-tick { animation: gov-tick 1.6s cubic-bezier(.16, 1, .3, 1); }
+@media (prefers-reduced-motion: reduce) {
+  .gov-rise { animation: none; }
+  .gov-tick { animation-duration: .01ms; }
 }
